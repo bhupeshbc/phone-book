@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import './App.css'; // Add this line to import the App.css file
+import Contacts from './Components/Contacts';
 import './Components/Contacts.css'; // Add this line to import the Contacts.css file
-import Contacts from './components/contacts';
 
 // Rest of the code...
 
