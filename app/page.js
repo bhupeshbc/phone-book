@@ -1,72 +1,31 @@
 "use client"
 
-import { useState } from 'react';
-import './App.css'; // Add this line to import the App.css file
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import Contacts from './Components/Contacts';
-import './Components/Contacts.css'; // Add this line to import the Contacts.css file
-
-// Rest of the code...
-
+import './Components/Contacts.css';
 
 const Page = () => {
-  const [contacts, setContacts] = useState([
-    {
-      id: 1,
-      name: "Achyut Timsina",
-      phone: "9841414243"
-    },
-    {
-      id: 2,
-      name: "Kiran Rana",
-      phone: "9841103035"
-    },
-    {
-      id: 3,
-      name: "Shankar Shrestha",
-      phone: "9821232425"
-    }
-  ]);
+  const [contacts, setContacts] = useState([]);
 
-  const addContact = (name, phone) => {
-    const newContact = {
-      id: contacts.length + 1,
-      name,
-      phone
-    };
-    setContacts([...contacts, newContact]);
-  };
-
-  const updateContact = (id, newName, newPhone) => {
-    setContacts(prevContacts =>
-      prevContacts.map(contact =>
-        contact.id === id ? { ...contact, name: newName, phone: newPhone } : contact
-      )
-    );
-  };
-
-  const deleteContact = (id) => {
-    setContacts(prevContacts =>
-      prevContacts.filter(contact => contact.id !== id)
-    );
-  };
-
-  const searchContacts = (searchTerm) => {
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  };
+  useEffect(() => {
+    axios.get('http://localhost:4000/notes')
+      .then(response => {
+        console.log(response);
+        setContacts(response.data.notes);
+      })
+      .catch(error => {
+        console.error(error); 
+      });
+  }, []);
 
   return (
     <div className="app">
-      <h1>Phone Book</h1>
-      <Contacts
-        contacts={searchContacts('')}
-        addContact={addContact}
-        updateContact={updateContact}
-        deleteContact={deleteContact}
-      />
+      <h1 style={{ color: "red"}}>Phone Book</h1>
+      <Contacts contacts={contacts} />
     </div>
   );
 };
 
+ 
 export default Page;

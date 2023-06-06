@@ -1,0 +1,22 @@
+
+
+{
+    "contacts" : [
+        {
+            "id": 1,
+            "name": "Achyut Timsina",
+            "phone": "9841414243",
+            "important ": true
+          },
+          {
+            "id": 2,
+            "name": "Kiran Rana",
+            "phone": "9841103035"
+          },
+          {
+            "id": 3,
+            "name": "Shankar Shrestha",
+            "phone": "9821232425"
+          }
+    ]
+}

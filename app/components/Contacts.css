@@ -10,11 +10,13 @@
   th,
   td {
     padding: 10px;
-    border: 1px solid #27cc18;
+    border: 1px solid #f7f7f7;
   }
   
   input[type='text'] {
     padding: 5px;
+    background-color: #000000;
+
     width: 100%;
   }
   
